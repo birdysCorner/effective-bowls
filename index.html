@@ -92,8 +92,8 @@
     <thead>
         <tr>
             <th>End</th>
-            <th>Enter Value (0, 1, or 2)</th>
-            <th>Accumulated Total</th>
+            <th>Enter Effective (0, 1, or 2)</th>
+            <th>Accumulated Effective</th>
         </tr>
     </thead>
 
@@ -197,13 +197,16 @@ function exportToCSV() {
 
     const fileName = `${date}_${safeDescription}.csv`;
 
+    // Table title
+    csv.push("Effective Lawn Bowls");
+    
     // Metadata
     csv.push(`Description,${description}`);
     csv.push(`Date,${date}`);
     csv.push("");
 
     // Table header
-    csv.push("Row,Value,Accumulated Total");
+    csv.push("End,# Effective,Accumulated Effective");
 
     let runningTotal = 0;
 
@@ -292,3 +295,4 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
