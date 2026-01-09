@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accumulated Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .header-fields {
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        .header-fields label {
+            display: block;
+            font-weight: bold;
+            margin-top: 12px;
+            font-size: 1.1em;
+        }
+        .header-fields input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tfoot td {
+            font-weight: bold;
+            background-color: #eaeaea;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 6px;
+            font-size: 1em;
+        }
+        .invalid {
+            border: 2px solid red;
+            background-color: #ffe6e6;
+        }
+    </style>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2c2c2c">
+
+<!-- iOS support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Accumulated Table">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+
+</head>
+<body>
+
+<!-- clear - reset button -->
+<!-- and Export to CSV button -->
+
+<div style="max-width:600px; margin-bottom:20px;">
+    <button onclick="resetAll()" style="padding:10px 20px; font-size:1em;">
+        Clear / Reset
+    </button>
+    <button onclick="exportToCSV()" style="padding:10px 20px; font-size:1em; margin-left:10px;">
+        Export to CSV
+    </button>
+</div>
+
+<h2>Effective Lawn Bowls</h2>
+
+<div class="header-fields">
+    <label for="description">Game Description</label>
+    <input type="text" id="description">
+
+    <label for="dateField">Date</label>
+    <input type="date" id="dateField">
+</div>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>End</th>
+            <th>Enter Value (0, 1, or 2)</th>
+            <th>Accumulated Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- 21 rows -->
+        <tr><td>1</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>2</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>3</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>4</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>5</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>6</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>7</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>8</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>9</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>10</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>11</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>12</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>13</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>14</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>15</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>16</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>17</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>18</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>19</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>20</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr><td>21</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td>Totals / Average</td>
+            <td id="grandTotal">0</td>
+            <td id="average">0</td>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    function validateAndUpdate(input) {
+        const value = input.value;
+
+        // Blank is invalid
+        if (value === "") {
+            input.classList.add("invalid");
+            updateTotals();
+            return;
+        }
+
+        const num = Number(value);
+
+        // Must be integer 0, 1, or 2
+        if (!Number.isInteger(num) || num < 0 || num > 2) {
+            input.classList.add("invalid");
+        } else {
+            input.classList.remove("invalid");
+        }
+
+        updateTotals();
+    }
+
+    function updateTotals() {
+        const rows = document.getElementById("dataTable").tBodies[0].rows;
+
+        let runningTotal = 0;
+        let grandTotal = 0;
+        let validCount = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+            const input = rows[i].cells[1].querySelector("input");
+
+            if (!input.classList.contains("invalid")) {
+                const value = Number(input.value);
+                runningTotal += value;
+                grandTotal += value;
+                validCount++;
+            }
+
+            rows[i].cells[2].textContent = runningTotal;
+        }
+
+        document.getElementById("grandTotal").textContent = grandTotal;
+        document.getElementById("average").textContent =
+            validCount > 0 ? (grandTotal / validCount).toFixed(2) : 0;
+    }
+// --------------------------------------------------------------
+// export to CSV
+
+
+function exportToCSV() {
+    const rows = document.getElementById("dataTable").tBodies[0].rows;
+    let csv = [];
+
+    const description = document.getElementById("description").value || "data";
+    const date = document.getElementById("dateField").value || "no-date";
+
+    // Sanitize description for filename
+    const safeDescription = description
+        .trim()
+        .replace(/\s+/g, "_")
+        .replace(/[^a-zA-Z0-9_-]/g, "");
+
+    const fileName = `${date}_${safeDescription}.csv`;
+
+    // Metadata
+    csv.push(`Description,${description}`);
+    csv.push(`Date,${date}`);
+    csv.push("");
+
+    // Table header
+    csv.push("Row,Value,Accumulated Total");
+
+    let runningTotal = 0;
+
+    for (let i = 0; i < rows.length; i++) {
+        const input = rows[i].cells[1].querySelector("input");
+        const value = input.classList.contains("invalid") ? "" : input.value;
+
+        if (value !== "") {
+            runningTotal += Number(value);
+        }
+
+        csv.push(`${i + 1},${value},${runningTotal}`);
+    }
+
+    // Totals
+    csv.push("");
+    csv.push(`Grand Total,${document.getElementById("grandTotal").textContent}`);
+    csv.push(`Average,${document.getElementById("average").textContent}`);
+
+    // Create and download file
+    const blob = new Blob([csv.join("\n")], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+
+// function for clear all or reset
+
+function resetAll() {
+    if (!confirm("Clear all data? This cannot be undone.")) return;
+
+    // Clear header fields
+    document.getElementById("description").value = "";
+    document.getElementById("dateField").value = "";
+
+    // Clear table inputs
+    const rows = document.getElementById("dataTable").tBodies[0].rows;
+    for (let i = 0; i < rows.length; i++) {
+        const input = rows[i].cells[1].querySelector("input");
+        input.value = "";
+        input.classList.remove("invalid");
+        rows[i].cells[2].textContent = "0";
+    }
+
+    // Reset totals
+    document.getElementById("grandTotal").textContent = "0";
+    document.getElementById("average").textContent = "0";
+
+    // Clear storage
+    localStorage.removeItem(STORAGE_KEY);
+}
+
+
+// ----------------------------------------------------------------
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registered"))
+        .catch(err => console.error("Service Worker error:", err));
+}
+</script>
+
+<script>
+window.addEventListener("load", () => {
+    const dateField = document.getElementById("dateField");
+
+    if (!dateField.value) {
+        const today = new Date();
+        dateField.value = today.toISOString().split("T")[0];
+    }
+
+    saveToStorage(); // keep localStorage in sync
+});
+</script>
+
+
+</body>
+</html>
