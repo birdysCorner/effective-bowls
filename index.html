@@ -101,13 +101,15 @@ h1, h2, h3 {
 </div>
 
 <table id="dataTable">
-    <thead>
-        <tr>
-            <th>End</th>
-            <th>Enter Effective (0, 1, or 2)</th>
-            <th>Accumulated Effective</th>
-        </tr>
-    </thead>
+<thead>
+  <tr>
+    <th>End<br>Number</th>
+    <th>Effective<br>(0–2)</th>
+    <th>Accumulated<br>Effective</th>
+    <th>Percentage<br>Effective</th>
+  </tr>
+</thead>
+
 
     <tbody>
         <!-- 21 rows -->
@@ -164,6 +166,24 @@ h1, h2, h3 {
         }
 
         updateTotals();
+
+        rows.forEach((row, index) => {
+    const endNumber = index + 1;
+    const accumulatedCell = row.querySelector(".accumulated");
+    const percentageCell = row.querySelector(".percentage");
+
+    const accumulatedValue = Number(accumulatedCell.textContent);
+
+    const maxPossible = endNumber * 2;
+
+    const percentage =
+        maxPossible > 0
+            ? (accumulatedValue / maxPossible) * 100
+            : 0;
+
+    percentageCell.textContent = percentage.toFixed(1) + "%";
+    });
+
     }
 
     function updateTotals() {
@@ -307,6 +327,7 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
 
 
