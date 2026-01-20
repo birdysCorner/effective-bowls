@@ -166,24 +166,6 @@ h1, h2, h3 {
         }
 
         updateTotals();
-
-        rows.forEach((row, index) => {
-    const endNumber = index + 1;
-    const accumulatedCell = row.querySelector(".accumulated");
-    const percentageCell = row.querySelector(".percentage");
-
-    const accumulatedValue = Number(accumulatedCell.textContent);
-
-    const maxPossible = endNumber * 2;
-
-    const percentage =
-        maxPossible > 0
-            ? (accumulatedValue / maxPossible) * 100
-            : 0;
-
-    percentageCell.textContent = percentage.toFixed(1) + "%";
-    });
-
     }
 
     function updateTotals() {
@@ -205,6 +187,24 @@ h1, h2, h3 {
 
             rows[i].cells[2].textContent = runningTotal;
         }
+
+        
+    rows.forEach((row, index) => {
+    const endNumber = index + 1;
+    const accumulatedCell = row.querySelector(".accumulated");
+    const percentageCell = row.querySelector(".percentage");
+
+    const accumulatedValue = Number(accumulatedCell.textContent);
+
+    const maxPossible = endNumber * 2;
+
+    const percentage =
+        maxPossible > 0
+            ? (accumulatedValue / maxPossible) * 100
+            : 0;
+
+    percentageCell.textContent = percentage.toFixed(1) + "%";
+    });
 
         document.getElementById("grandTotal").textContent = grandTotal;
         document.getElementById("average").textContent =
@@ -327,6 +327,7 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
 
 
