@@ -114,6 +114,13 @@ h1, h2, h3 {
     <tbody>
         <!-- 21 rows -->
         <tr><td>1</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
+        <tr>
+          <td class="end-number"></td>
+          <td><input type="number" class="effective-input" /></td>
+          <td class="accumulated"></td>
+          <td class="percentage"></td>
+        </tr>
+
         <tr><td>2</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
         <tr><td>3</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
         <tr><td>4</td><td><input type="number" min="0" max="2" step="1" oninput="validateAndUpdate(this)"></td><td>0</td></tr>
@@ -327,6 +334,7 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
 
 
