@@ -1,4 +1,4 @@
-const CACHE_NAME = "accumulated-table-v4";
+const CACHE_NAME = "accumulated-table-v5";
 
 const FILES_TO_CACHE = [
   "./",
@@ -43,6 +43,7 @@ self.addEventListener("fetch", event => {
     })
   );
 });
+
 
 
 
