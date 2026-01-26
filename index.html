@@ -179,12 +179,13 @@ function exportCSV() {
     const description = document.getElementById("description").value || "";
     const date = document.getElementById("date").value || "";
 
-    // Build filename
+    // Filename: ELB instead of Effective Lawn Bowls
     const safeDescription = description
         .replace(/[^a-z0-9]/gi, "_")
         .toLowerCase();
+
     const filename =
-        `effective_lawn_bowls_${safeDescription || "game"}_${date || "nodate"}.csv`;
+        `ELB_${safeDescription || "game"}_${date || "nodate"}.csv`;
 
     let csv = "";
     csv += "Effective Lawn Bowls\n";
@@ -207,19 +208,19 @@ function exportCSV() {
             lastAccumulated = Number(acc);
         }
 
-        // Excel-friendly percentage (numeric, not text)
+        // Convert percentage to numeric % (multiply by 100)
         const pctNumber = pctText
-            ? (parseFloat(pctText) / 100).toFixed(4)
+            ? parseFloat(pctText).toFixed(2)
             : "";
 
         csv += `${end},${effValue},${acc},${pctNumber}\n`;
     });
 
     const avgPct =
-        validEnds > 0 ? (lastAccumulated / (validEnds * 2)) : 0;
+        validEnds > 0 ? (lastAccumulated / (validEnds * 2)) * 100 : 0;
 
     csv += "\n";
-    csv += `Totals,${lastAccumulated},${lastAccumulated},${avgPct.toFixed(4)}\n`;
+    csv += `Totals,${lastAccumulated},${lastAccumulated},${avgPct.toFixed(2)}\n`;
 
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
