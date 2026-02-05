@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Effective Lawn Bowls</title>
+<title>My Effective Lawn Bowls</title>
 
 <style>
     body {
@@ -145,7 +145,7 @@ function updateTotals() {
 
         accCell.textContent = accumulated;
         pctCell.textContent =
-            ((accumulated / (validEnds * 2)) * 100).toFixed(1) + "%";
+            ((accumulated / (validEnds * 2)) * 100).toFixed(1) + " %";
     });
 
     document.getElementById("totalEffective").textContent = accumulated;
@@ -155,7 +155,7 @@ function updateTotals() {
         validEnds > 0 ? (accumulated / (validEnds * 2)) * 100 : 0;
 
     document.getElementById("averagePercentage").textContent =
-        avgPct.toFixed(1) + "%";
+        avgPct.toFixed(1) + " %";
 }
 
 function resetTable() {
@@ -172,7 +172,7 @@ function resetTable() {
 
     document.getElementById("totalEffective").textContent = "0";
     document.getElementById("totalAccumulated").textContent = "0";
-    document.getElementById("averagePercentage").textContent = "0%";
+    document.getElementById("averagePercentage").textContent = "0 %";
 }
 
 function exportCSV() {
@@ -188,7 +188,7 @@ function exportCSV() {
         `ELB_${safeDescription || "game"}_${date || "nodate"}.csv`;
 
     let csv = "";
-    csv += "Effective Lawn Bowls\n";
+    csv += "My Effective Lawn Bowls\n";
     csv += `Game Description,${description}\n`;
     csv += `Date,${date}\n`;
     csv += "\n";
@@ -236,3 +236,4 @@ function exportCSV() {
 
 </body>
 </html>
+
