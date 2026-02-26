@@ -1,7 +1,7 @@
 
 {
-  "name": "Accumulated Table",
-  "short_name": "Table",
+  "name": "My Effective Bowls",
+  "short_name": "MELB",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -20,4 +20,5 @@
     }
   ]
 }
+
 
